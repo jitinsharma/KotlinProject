@@ -33,5 +33,9 @@ class MainActivity : AppCompatActivity() {
 
     fun callGitHubService(user : String) {
         userRequest = UserRequest()
+        userRequest?.getUserRepos(user) { response ->
+            val responseParser = ResponseParser()
+            responseParser.getRepoObjects(response as String)
+        }
     }
 }
